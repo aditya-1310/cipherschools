@@ -1,0 +1,14 @@
+div ~ p{
+    color: cyan;
+}
+/* div + p{
+    color: cyan;
+}
+div > p{
+    color: cyan;
+}
+div p{
+    color: cyan;
+} */
+
+/* every way of css have diffrent meaning  */
