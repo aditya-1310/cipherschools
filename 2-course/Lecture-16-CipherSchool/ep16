@@ -1,0 +1,6 @@
+JSX looks and behaves like HTML.
+JSX can contain 2 things:
+ 2. HTML tags
+ 2. React   components
+
+ JSX allow to write code inside
