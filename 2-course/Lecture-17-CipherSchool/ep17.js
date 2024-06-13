@@ -17,4 +17,4 @@ class App extends Component {
 export default App;
 
 
-//This is the code of App.js//  we learned how the component works
+//This is the code of App.js//  we learned heo 
