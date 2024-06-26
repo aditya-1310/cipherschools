@@ -1,22 +1,33 @@
 const AddTask =()=>{
+    let handleInputChange = (e)=>{
+        console.log(e.target.value);
+    }
     return (
       <div>
           <form>
              <div class="ui form">
     <div class="field">
       <label>title</label>
-      <input type="text" placeholder="Title" name="title"/>
+      spellcheck={false} 
+      data-ms-editor={true}
+      <input type="text"
+       placeholder="Title"
+        name="title"
+       onChange={handleInputChange}/>
     </div>
           <div class="field">
       <label>description</label>
-      <textarea rows="2" placeholder="description" name="description"/>
+      spellcheck={false} 
+      data-ms-editor={true}
+      <textarea rows="2" 
+      placeholder="description"
+       name="description"
+      onChange={handleInputChange}/>
     </div>
       </div>
-      <button class="ui primary button">Summit</button>
+      <button className="ui primary button">Summit</button>
   </form>
   </div>
     );
   }
   export default AddTask;
-  //In this lecture we add a addtask form in the ui we have used form to take the input 
-//  sementic ui for the add the form 
