@@ -1,0 +1,62 @@
+const BookIssueForm = () =>{
+  return <h1>Book Issue Form</h1>
+};
+
+export default BookIssueForm;
+
+const  getAllStudents = async (req,res)=>{
+  try{
+    let studentList = await User.find({type: "STUDENT"});
+    return res.status(200).send(studentList);
+  }catch(err){
+    console.error(err);
+    return res.status(500).send({message: err.message});
+  }
+};
+
+export const getAllStudents = async ()=>{
+  const {response: studentList} = await LibraryApplicationBackend.get("/get-students");
+  return studentList;
+};
+
+const [bookOptions, setBookOptions] = useState([]);
+const [studentOptions, setStudentOptions] = useState([]);
+
+useEffect(()=>{
+  getAllStudents().then((studentList)=>{
+    setStudentOptions(studentList.map((student)=>{
+      return {
+        value: student._id, label: '${student.firstName} ${student.lastName}',
+      };
+    })
+    );
+  });
+  getAllBooks().then((bookList)=>{
+    getAllStudents().then((bookList)=>{
+    setBookOptions(bookList.map((book)=>{
+      return {
+        value: book.isbn, label: '${book.title} by ${book.author}',
+      };
+    })
+    );
+  });
+},[]);
+
+export const addNewBookIssue = async (bookIssue) =>{
+  const {data} = await libraryApplicationBackend.post("/book-issue/add", {...bookIssue,});
+  return data;
+};
+
+const BookIssueScreen = () =>{
+  const [bookIssueList, setBookIssueList] = useState([]);
+  const [selectedStatus, setSelectedStatus] = useState("ISSUED");
+  useEffect(()=>{
+    getBookIssueList(selectedStatus).then((list)=>{
+      setBookIssueList(list);
+    })
+  },[selectedStatus]);
+
+  return
+};
+
+export default BookIssueScreen;
